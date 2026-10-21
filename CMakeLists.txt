@@ -34,3 +34,9 @@ execute_process(
 find_package(pybind11 REQUIRED)
 pybind11_add_module(warehouse_py python/bindings.cpp)
 target_link_libraries(warehouse_py PRIVATE warehouse_core)
+
+add_executable(sensor_server network/SensorServer.cpp network/sensor_server_main.cpp)
+target_link_libraries(sensor_server PRIVATE warehouse_core Threads::Threads)
+
+add_executable(sensor_client network/sensor_client_main.cpp)
+target_link_libraries(sensor_client PRIVATE Threads::Threads)
