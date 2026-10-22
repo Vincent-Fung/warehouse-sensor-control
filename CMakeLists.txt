@@ -40,3 +40,11 @@ target_link_libraries(sensor_server PRIVATE warehouse_core Threads::Threads)
 
 add_executable(sensor_client network/sensor_client_main.cpp)
 target_link_libraries(sensor_client PRIVATE Threads::Threads)
+
+find_package(OpenSSL REQUIRED)
+
+add_executable(tls_server network/tls_server_main.cpp)
+target_link_libraries(tls_server PRIVATE OpenSSL::SSL OpenSSL::Crypto)
+
+add_executable(tls_client network/tls_client_main.cpp)
+target_link_libraries(tls_client PRIVATE OpenSSL::SSL OpenSSL::Crypto)

@@ -1,7 +1,7 @@
 FROM ubuntu:24.04 AS build
 
 RUN apt-get update && apt-get install -y \
-    cmake g++ python3-dev python3-pip \
+    cmake g++ python3-dev python3-pip libssl-dev \
     && pip install pybind11 --break-system-packages --no-cache-dir
 
 WORKDIR /app
